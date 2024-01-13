@@ -1,0 +1,90 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="eatable.Ui.MainWindow"
+        MinWidth="800"
+        MinHeight="400"
+        Title="eatable"
+        Name="Root"
+        Focusable="True"
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch"
+        >
+  
+  <Grid
+    ColumnDefinitions="Auto, 2*, *"
+    RowDefinitions="*">
+  
+    <!-- Recipes panel -->
+    <DockPanel Grid.Column="0" MinWidth="200">
+      <Border DockPanel.Dock="Top" Background="DarkGreen">
+        <TextBlock
+          Text="Przepisy"
+          Margin="5"
+          HorizontalAlignment="Center" />
+      </Border>
+      <Grid DockPanel.Dock="Bottom" Margin="-0" ColumnDefinitions="*, Auto">
+        <TextBox Name="NewRecipeName" Text="Nowy Przepis" Grid.Column="0" BorderThickness="0"/>
+        <Button Click="NewRecipeButtonClicked" Content="Dodaj" Grid.Column="1"/>
+      </Grid>      
+      <ListBox Name="RecipesDisplay" DockPanel.Dock="Top"/>
+    </DockPanel>
+
+    <!-- Recipe details -->
+    <DockPanel Grid.Column="1" Margin="20" >
+      <ScrollViewer>
+        <StackPanel>
+          <Border CornerRadius="15" Background="DarkCyan">
+            <TextBox
+              Name="RecipeName"
+              PointerExited="RecipeNamePointerLeft"
+              Text="Nazwa przepisu"
+              Background="DarkCyan"
+              BorderThickness="0"
+              HorizontalAlignment="Center"
+              HorizontalContentAlignment="Center"
+              Margin="0"/>
+          </Border>
+          <TextBox
+            Name="RecipeInfo"
+            Margin="3"
+            MinHeight="175"
+            VerticalAlignment="Center"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            BorderThickness="0"
+            PointerExited="RecipeInfoPointerLeft"
+          />
+          <Border CornerRadius="15" Background="DarkCyan">
+            <TextBlock Text="Potrzebne składniki" HorizontalAlignment="Center" Margin="5"/>
+          </Border>
+          <WrapPanel Name="RecipeIngredients" Margin="3"/>
+          <Border CornerRadius="15" Background="DarkCyan">
+            <TextBlock Text="Brakujące składniki" HorizontalAlignment="Center" Margin="5"/>
+          </Border>
+          <WrapPanel Name="RecipeMissingIngredients" Margin="3"/>
+          <ItemsControl ItemsSource="{Binding Test}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <TextBox Text="{Binding}"/>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </ScrollViewer>
+    </DockPanel>
+
+    <!-- Ingredients buttons -->
+    <DockPanel Grid.Column="2">
+      <Grid RowDefinitions="20, *, Auto">
+        <WrapPanel Name="IngredientsDisplay" Grid.Row="1"/>
+        <Grid ColumnDefinitions="*, Auto" Grid.Row="2">
+          <TextBox Name="NewIngredientName" Grid.Column="0" Text="Nowy składnik" />
+          <Button Click="NewIngredientButtonClicked" Grid.Column="1" Content="Dodaj"/>
+        </Grid>
+      </Grid>
+    </DockPanel>
+  </Grid>
+</Window>

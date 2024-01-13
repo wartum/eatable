@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+	<PublishAot>false</PublishAot>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="avalonia" Version="11.0.6" />
+    <PackageReference Include="avalonia.desktop" Version="11.0.6" />
+    <PackageReference Include="avalonia.fonts.inter" Version="11.0.6" />
+    <PackageReference Include="avalonia.reactiveui" Version="11.0.6" />
+    <PackageReference Include="avalonia.themes.fluent" Version="11.0.6" />
+    <PackageReference Include="microsoft.entityframeworkcore.design" Version="8.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="microsoft.entityframeworkcore.sqlite" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>
